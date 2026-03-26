@@ -1,6 +1,6 @@
-# claude-scientific-paper-writer
+# scientific-paper-writer
 
-A Claude Code skill for writing publication-ready scientific manuscripts targeting top-tier journals. The only skill in this space that **fetches live journal requirements** — author guidelines, AI disclosure policy, word limits, and LaTeX template — before writing a single sentence.
+An agent skill for writing publication-ready scientific manuscripts targeting top-tier journals. The only skill in this space that **fetches live journal requirements** — author guidelines, AI disclosure policy, word limits, and LaTeX template — before writing a single sentence.
 
 Works with Claude Code, Codex CLI, Gemini CLI, Cursor, and any agent that follows the [Agent Skills](https://agentskills.io) open standard.
 
@@ -24,23 +24,33 @@ Works with Claude Code, Codex CLI, Gemini CLI, Cursor, and any agent that follow
 
 ## Install
 
+Copy the skill file to your agent's skills directory:
+
 ```bash
-# Single file — copy to your user-level skills directory
+# Claude Code — user-level (available in all projects)
 cp skills/scientific-paper-writer/SKILL.md ~/.claude/skills/scientific-paper-writer.md
-```
 
-Or for a specific project only:
-
-```bash
+# Claude Code — project-level only
 mkdir -p .claude/skills/scientific-paper-writer
 cp skills/scientific-paper-writer/SKILL.md .claude/skills/scientific-paper-writer/SKILL.md
+
+# Codex CLI
+cp skills/scientific-paper-writer/SKILL.md ~/.codex/skills/scientific-paper-writer.md
+
+# Gemini CLI
+cp skills/scientific-paper-writer/SKILL.md ~/.gemini/skills/scientific-paper-writer.md
+
+# Cursor / VS Code
+cp skills/scientific-paper-writer/SKILL.md .cursor/rules/scientific-paper-writer.md
 ```
+
+Follows the [agentskills.io](https://agentskills.io/specification) open standard — any compliant runtime will pick up the file automatically.
 
 ---
 
 ## Use
 
-Invoke with `/scientific-paper-writer` in Claude Code, then describe your task:
+Invoke the skill and describe your task. In Claude Code use `/scientific-paper-writer`; in Codex CLI, Gemini CLI, and Cursor the invocation syntax varies by platform — refer to your agent's skill invocation docs.
 
 ```
 /scientific-paper-writer Write an Article for Nature Biotechnology on our new
@@ -123,32 +133,34 @@ writing_outputs/YYYYMMDD_topic/
 
 ```
 # Any journal — auto-detected format
-/scientific-paper-writer Write a Research Article for PLOS Computational Biology
+Write a Research Article for PLOS Computational Biology
 on our DNA tokenization benchmarks. I'll provide benchmark_results.csv.
 
 # Anti-AI voice audit only
-/scientific-paper-writer Run the AI-voice audit on this draft: [paste text].
+Run the AI-voice audit on this draft: [paste text].
 List every pattern found and rewrite each flagged sentence.
 
 # Peer review response
-/scientific-paper-writer Write a complete response letter to these reviewer comments
+Write a complete response letter to these reviewer comments
 for my Genome Biology submission: [paste comments]
 
 # Grant proposal
-/scientific-paper-writer Write the Specific Aims page and Significance section
+Write the Specific Aims page and Significance section
 of an NIH R01 on NAD+ metabolism in aging. FOA: PA-23-065.
 
 # Journal requirements lookup only
-/scientific-paper-writer Look up current submission requirements for
+Look up current submission requirements for
 Nucleic Acids Research, Database Issue. I need word limits, AI policy,
 and the LaTeX template.
 ```
+
+Prefix with `/scientific-paper-writer` in Claude Code, or invoke via your platform's skill syntax.
 
 ---
 
 ## Compatibility
 
-Follows the [agentskills.io](https://agentskills.io/specification) open standard.
+Follows the [agentskills.io](https://agentskills.io/specification) open standard. Any agent runtime that supports SKILL.md files will work.
 
 | Platform | Compatible |
 |---------|-----------|
